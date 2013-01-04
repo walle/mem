@@ -1,0 +1,16 @@
+body {
+  background: #fcfcfc;
+}
+
+#board {
+  width: 180px;
+  overflow: hidden;
+}
+
+.card {
+  float: left;
+  border-radius: 8px;
+  border: 1px solid #333;
+  width: 40px;
+  height: 40px;
+}
