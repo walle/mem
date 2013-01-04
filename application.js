@@ -24,7 +24,7 @@ Observerable.mixin = function (target) {
 };
 
 var CARD_IMAGES = ['camera', 'clock', 'glass', 'home', 'music', 'umbrella', 'bin', 'car', 'dog', 'heart', 'leaf', 'star'];
-
+var CARD_SIZE = 80;
 
 // Board
 
@@ -46,6 +46,11 @@ Board.prototype.prepare = function() {
   this.notifyObservers('prepared');
 };
 
+Board.prototype.flipCard = function(x, y) {
+  var card = this.cards[y][x];
+  this.notifyObservers('flip', card);
+}
+
 Observerable.mixin(Board.prototype);
 
 // Card
@@ -55,10 +60,18 @@ function Card(x, y, image) {
   this.y = y;
   this.image = image;
   this.open = false;
+  this.id = 'card-' + this.y + '-' + this.x;
 }
 
 Card.prototype.render = function() {
-  return '<div class="card" data-x="' + this.x + '" data-y="' + this.y + '"><img src="./images/' + this.image + '.png" alt="' + this.image + '" /></div>';
+  return '<div id="' + this.id + '" style="width:' + CARD_SIZE + 'px;height:' + CARD_SIZE + 'px;top:' + this.y * CARD_SIZE + 'px;left:' + this.x * CARD_SIZE + 'px;" class="card" data-x="' + this.x + '" data-y="' + this.y + '">' +
+            '<div class="front">' +
+            this.id +
+            '</div>' +
+            '<div class="back">' +
+              '<img src="./images/' + this.image + '.png" alt="' + this.image + '" />' +
+            '</div>' +
+          '</div>';
 };
 
 // Board view
@@ -79,8 +92,10 @@ function BoardView(controller) {
       target = event.target;
     }
 
+    target = target.parentElement; // Card is wrapper to front and back divs
+
     if (target.hasAttribute('data-x') && target.hasAttribute('data-y')) {
-      this.controller.handleInteraction(target.attributes['data-x'].value, target.hasAttribute('data-y').value);
+      controller.handleInteraction(target.attributes['data-x'].value, target.attributes['data-y'].value);
     }
   };
 
@@ -89,9 +104,13 @@ function BoardView(controller) {
   this.canvas.addEventListener('touchmove', handleInteraction);
 
   // Listen for updates on the model.
-  this.board.addObserver(function (event) {
+  this.board.addObserver(function (event, card) {
     if (event == 'prepared') {
       this.renderInitial();
+    }
+    else if (event == 'flip') {
+      var cardElement = document.getElementById(card.id);
+      cardElement.classList.toggle('flipped');
     }
     else {
       this.render();
