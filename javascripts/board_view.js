@@ -31,6 +31,19 @@ function BoardView(controller) {
     var cardElement = document.getElementById(card.id);
     cardElement.classList.toggle('flipped');
   }, this);
+
+  this.board.addObserver('match', function() {
+    // Give points
+  }, this);
+
+  this.board.addObserver('flipBack', function(cards) {
+    setTimeout(function () {
+      cards.forEach(function (card) {
+        var cardElement = document.getElementById(card.id);
+        cardElement.classList.toggle('flipped');
+      });
+    }, 1000);
+  }, this);
 }
 
 BoardView.prototype.renderInitial = function() {
