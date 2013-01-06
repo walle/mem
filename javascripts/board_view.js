@@ -22,8 +22,6 @@ function BoardView(controller) {
   };
 
   this.canvas.addEventListener('click', handleInteraction);
-  this.canvas.addEventListener('touchstart', handleInteraction);
-  this.canvas.addEventListener('touchmove', handleInteraction);
 
   // Listen for updates on the model.
   this.board.addObserver(function (event, card) {
