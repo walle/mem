@@ -21,4 +21,8 @@ task :run => [:build] do
   sh 'open build/index.html'
 end
 
+task :serve => [:build] do
+  sh 'cd build; python -mSimpleHTTPServer 8080'
+end
+
 task :default => :run
