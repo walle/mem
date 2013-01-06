@@ -3,18 +3,20 @@ body {
 }
 
 #board {
-  -webkit-perspective: 1000;
-  position: relative;
+  width: 320px;
+  overflow: hidden;
 }
 
 .card {
-  width: 100%;
-  height: 100%;
-  position: absolute;
+  width: 50px;
+  height: 50px;
   border-radius: 8px;
-  border: 4px solid #efefef;
+  border: 5px solid #efefef;
   -webkit-transform-style: preserve-3d;
   -webkit-transition: all .4s linear;
+  margin: 10px;
+  float: left;
+  box-shadow: 3px 3px 5px rgba(50, 50, 50, 0.75);
 }
 
 .card div {
@@ -29,12 +31,10 @@ body {
   background: #ececec;
   -webkit-transform: rotateX(180deg);
   position: relative;
-  border-radius: 4px;
 }
 
 .card .back {
   background: url(../gfx/card_back.png);
-  border-radius: 4px;
 }
 
 .card .front img {
