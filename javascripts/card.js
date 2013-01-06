@@ -7,10 +7,8 @@ function Card(x, y, image) {
 }
 
 Card.prototype.render = function() {
-  return '<div id="' + this.id + '" style="width:' + CARD_SIZE + 'px;height:' + CARD_SIZE + 'px;top:' + this.y * CARD_SIZE + 'px;left:' + this.x * CARD_SIZE + 'px;" class="card" data-x="' + this.x + '" data-y="' + this.y + '">' +
-            '<div class="front">' +
-            this.id +
-            '</div>' +
+  return '<div id="' + this.id + '" style="width:' + CARD_SIZE + 'px;height:' + CARD_SIZE + 'px;top:' + ((this.y * CARD_SIZE) + this.y * CARD_MARGIN) + 'px;left:' + ((this.x * CARD_SIZE) + this.x * CARD_MARGIN) + 'px;" class="card" data-x="' + this.x + '" data-y="' + this.y + '">' +
+            '<div class="front"></div>' +
             '<div class="back">' +
               '<img src="./images/' + this.image + '.png" alt="' + this.image + '" />' +
             '</div>' +
