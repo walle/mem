@@ -12,6 +12,7 @@ task :build => [:clean] do
       .gsub(/\.\/stylesheets\/application\.css/, './application.css')
   end
   FileUtils.cp_r 'images', 'build'
+  FileUtils.cp_r 'gfx', 'build'
   FileUtils.cp 'stylesheets/application.css', 'build/application.css'
   javascripts = File.read('development.html').scan(/\<script type="text\/javascript" src="(.*)"\>\<\/script\>/)
   sh "uglifyjs #{javascripts.join(' ')} --wrap -c -o build/application.js"

@@ -1,12 +1,10 @@
 body {
-  background: #fcfcfc;
+  background: url(../gfx/wood.jpg);
 }
 
 #board {
   -webkit-perspective: 1000;
   position: relative;
-  width: 352px;
-  margin: 0 auto;
 }
 
 .card {
@@ -14,7 +12,7 @@ body {
   height: 100%;
   position: absolute;
   border-radius: 8px;
-  border: 1px solid #333;
+  border: 4px solid #efefef;
   -webkit-transform-style: preserve-3d;
   -webkit-transition: all .4s linear;
 }
@@ -28,18 +26,18 @@ body {
 }
 
 .card .front {
-  background: #6633cc;
-  border-radius: 8px;
+  background: #ececec;
+  -webkit-transform: rotateX(180deg);
+  position: relative;
+  border-radius: 4px;
 }
 
 .card .back {
-  background: #ec3366;
-  -webkit-transform: rotateX(180deg);
-  position: relative;
-  border-radius: 8px;
+  background: url(../gfx/card_back.png);
+  border-radius: 4px;
 }
 
-.card .back img {
+.card .front img {
   position: absolute;
   top: 50%;
   left: 50%;
