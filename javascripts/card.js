@@ -2,7 +2,7 @@ function Card(x, y, image) {
   this.x = x;
   this.y = y;
   this.image = image;
-  this.open = false;
+  this.flipped = false;
   this.id = 'card-' + this.y + '-' + this.x;
 }
 

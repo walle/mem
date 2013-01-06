@@ -21,13 +21,17 @@ Board.prototype.prepare = function() {
 
 Board.prototype.flipCard = function(x, y) {
   var card = this.cards[y][x];
-  if (this.flippedCards.length < 2) {
+  if (this.flippedCards.length < 2 && card.flipped === false) {
+    card.flipped = true;
     this.notifyObservers('flip', card);
     this.flippedCards.push(card);
     if (this.flippedCards.length === 2) {
       if (this.flippedCards[0].image ===  this.flippedCards[1].image) {
         this.notifyObservers('match'); // TODO: Points and player turns?
       } else {
+        this.flippedCards.forEach(function (card) {
+          card.flipped = false;
+        });
         this.notifyObservers('flipBack', this.flippedCards);
       }
       this.flippedCards = [];
