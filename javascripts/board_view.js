@@ -23,18 +23,13 @@ function BoardView(controller) {
 
   this.canvas.addEventListener('click', handleInteraction);
 
-  // Listen for updates on the model.
-  this.board.addObserver(function (event, card) {
-    if (event == 'prepared') {
-      this.renderInitial();
-    }
-    else if (event == 'flip') {
-      var cardElement = document.getElementById(card.id);
-      cardElement.classList.toggle('flipped');
-    }
-    else {
-      this.render();
-    }
+  this.board.addObserver('prepared', function() {
+    this.renderInitial();
+  }, this);
+
+  this.board.addObserver('flip', function(card) {
+    var cardElement = document.getElementById(card.id);
+    cardElement.classList.toggle('flipped');
   }, this);
 }
 

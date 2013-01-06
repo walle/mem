@@ -1,14 +1,18 @@
 function Observerable () {}
 
-Observerable.prototype.addObserver = function (observer, context) {
+Observerable.prototype.addObserver = function (event, observer, context) {
   this.observers = this.observers || [];
-  this.observers.push({block: observer, context: context || null});
+  this.observers.push({event: event, block: observer, context: context || null});
 };
 
-Observerable.prototype.notifyObservers = function () {
+Observerable.prototype.notifyObservers = function (event) {
   for (var i = 0; i < (this.observers || []).length; i++) {
     var observer = this.observers[i];
-    observer.block.apply(observer.context, arguments);
+    if (observer.event === event) {
+      shift = [].shift;
+      shift.apply(arguments); // "delete" the first argument that contains the events name, because we don't need it when we call the observer function
+      observer.block.apply(observer.context, arguments);
+    }
   }
 };
 
