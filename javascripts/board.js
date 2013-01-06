@@ -19,6 +19,6 @@ Board.prototype.prepare = function() {
 Board.prototype.flipCard = function(x, y) {
   var card = this.cards[y][x];
   this.notifyObservers('flip', card);
-}
+};
 
 Observerable.mixin(Board.prototype);
