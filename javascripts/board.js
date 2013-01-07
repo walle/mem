@@ -2,6 +2,7 @@ function Board() {
   this.width = 4;
   this.height = 6;
   this.flippedCards = [];
+  this.deck = new Deck();
   this.cards = new Array(this.height);
   for (var row = 0; row < this.height; row++) {
     this.cards[row] = new Array(this.width);
@@ -9,11 +10,11 @@ function Board() {
 }
 
 Board.prototype.prepare = function() {
+  var cards = this.deck.getShuffledCards();
   for (var row = 0; row < this.height; row++) {
     for(var column = 0; column < this.width; column++) {
-      // TODO: Make sure all cards is used and create a pair of cards
-      image = CARD_IMAGES[Math.floor(Math.random() * CARD_IMAGES.length)];
-      this.cards[row][column] = new Card(column, row, image);
+      card = cards[row * this.width + column];
+      this.cards[row][column] = new Card(column, row, card.image);
     }
   }
   this.notifyObservers('prepared');
