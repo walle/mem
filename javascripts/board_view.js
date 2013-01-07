@@ -1,6 +1,7 @@
 function BoardView(controller) {
   this.controller = controller;
   this.board = controller.board;
+  this.player = controller.player;
   this.canvas = document.getElementById('board');
 
   var handleInteraction = function (event) {
@@ -23,10 +24,11 @@ function BoardView(controller) {
   this.board.addObserver('flip', function(card) {
     var cardElement = document.getElementById(card.id);
     cardElement.classList.toggle('flipped');
+    this.player.clicks++;
   }, this);
 
   this.board.addObserver('match', function() {
-    // Give points
+    this.player.pairs++;
   }, this);
 
   this.board.addObserver('flipBack', function(cards) {

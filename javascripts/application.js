@@ -4,7 +4,8 @@ document.addEventListener('touchmove', function (event){
 });
 
 var board = new Board();
-var gameController = new GameController(board);
+var player = new Player();
+var gameController = new GameController(board, player);
 var boardView = new BoardView(gameController);
 
 gameController.start();

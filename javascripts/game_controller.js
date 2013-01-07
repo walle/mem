@@ -1,5 +1,6 @@
-function GameController (board) {
+function GameController (board, player) {
   this.board = board;
+  this.player = player;
 }
 
 GameController.prototype.handleInteraction = function (x, y) {
