@@ -4,16 +4,8 @@ function BoardView(controller) {
   this.canvas = document.getElementById('board');
 
   var handleInteraction = function (event) {
-    var touch = event.touches && event.touches[0];
-    var target;
-
-    if (touch) {
-      target = document.elementFromPoint(touch.pageX, touch.pageY);
-    }
-    else {
-      target = event.target;
-    }
-
+    event.preventDefault();
+    var target = event.target;
     target = target.parentElement; // Card is wrapper to front and back divs
 
     if (target.hasAttribute('data-x') && target.hasAttribute('data-y')) {
@@ -22,6 +14,7 @@ function BoardView(controller) {
   };
 
   this.canvas.addEventListener('click', handleInteraction);
+  this.canvas.addEventListener('touchstart', handleInteraction);
 
   this.board.addObserver('prepared', function() {
     this.renderInitial();
