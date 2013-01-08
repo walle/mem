@@ -7,7 +7,10 @@ end
 task :build => [:clean] do
   FileUtils.mkdir 'build'
   File.open('build/index.html','w+') do |output_file|
-    output_file.puts File.read('development.html')
+    output_file.puts File.read('development.html').gsub(/\.\/stylesheets\/application\.css/, './application.css')
+  end
+  File.open('build/play.html','w+') do |output_file|
+    output_file.puts File.read('play.html')
       .gsub(/\<!\-\- javascripts \-\-\>(.*)\<!\-\- javascripts \-\-\>/m, '<script type="text/javascript" src="./application.js"></script>')
       .gsub(/\.\/stylesheets\/application\.css/, './application.css')
   end
@@ -16,7 +19,7 @@ task :build => [:clean] do
   File.open('build/application.css','w+') do |output_file|
     output_file.puts File.read('stylesheets/application.css').gsub('../', '')
   end
-  javascripts = File.read('development.html').scan(/\<script type="text\/javascript" src="(.*)"\>\<\/script\>/)
+  javascripts = File.read('play.html').scan(/\<script type="text\/javascript" src="(.*)"\>\<\/script\>/)
   sh "uglifyjs #{javascripts.join(' ')} --wrap -c -o build/application.js"
 end
 

@@ -4,7 +4,7 @@ document.addEventListener('touchmove', function (event){
 });
 
 function setHight () {
-  document.getElementById('board').style.height = window.innerHeight + 'px';
+  document.getElementById('game').style.height = window.innerHeight + 'px';
 }
 setHight();
 window.onresize = setHight;
