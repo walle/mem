@@ -9,9 +9,31 @@ function setHight () {
 setHight();
 window.onresize = setHight;
 
-var board = new Board();
-var player = new Player();
-var gameController = new GameController(board, player);
-var boardView = new BoardView(gameController);
+function storePlayerNameAndPlay () {
+  var input = document.getElementsByTagName('input')[0];
+  localStorage["mem.player.name"] = input.value;
+  window.location = 'play.html';
+}
 
-gameController.start();
+function handlePlayButtonClick (event) {
+  if (!localStorage["mem.player.name"]) {
+    event.preventDefault();
+    var game = document.getElementById('game');
+    game.innerHTML = '<input type="text"/><input type="submit" value="Play" />' + game.innerHTML;
+    var submit = document.getElementsByTagName('input')[1];
+    submit.addEventListener('click', storePlayerNameAndPlay);
+  }
+}
+
+var playButton = document.getElementById('play-button');
+if (playButton) {
+  playButton.addEventListener('click', handlePlayButtonClick);
+  playButton.addEventListener('touchstart', handlePlayButtonClick);
+} else {
+  var board = new Board();
+  var player = new Player();
+  var gameController = new GameController(board, player);
+  var boardView = new BoardView(gameController);
+
+  gameController.start();
+}
