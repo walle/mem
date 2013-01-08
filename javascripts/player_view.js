@@ -20,5 +20,5 @@ function PlayerView (controller) {
 }
 
 PlayerView.prototype.render = function() {
-  this.canvas.innerHTML = '<h2>' + this.player.name + '</h2><p>Clicks: ' + this.player.clicks + '</p><p>Pairs: ' + this.player.pairs + '</p><p>Time: ' + this.player.humanTime() + '</p>';
+  this.canvas.innerHTML = '<h2>' + this.player.name + '</h2><p>' + t('clicks') + ': ' + this.player.clicks + '</p><p>' + t('pairs') + ': ' + this.player.pairs + '</p><p>' + t('time') + ': ' + this.player.humanTime() + '</p>';
 };
