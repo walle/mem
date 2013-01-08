@@ -9,8 +9,8 @@ Observerable.prototype.notifyObservers = function (event) {
   for (var i = 0; i < (this.observers || []).length; i++) {
     var observer = this.observers[i];
     if (observer.event === event) {
-      shift = [].shift;
-      shift.apply(arguments); // "delete" the first argument that contains the events name, because we don't need it when we call the observer function
+      //shift = [].shift;
+      //shift.apply(arguments); // "delete" the first argument that contains the events name, because we don't need it when we call the observer function
       observer.block.apply(observer.context, arguments);
     }
   }

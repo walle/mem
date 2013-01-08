@@ -34,6 +34,7 @@ if (playButton) {
   var player = new Player();
   var gameController = new GameController(board, player);
   var boardView = new BoardView(gameController);
+  var playerView = new PlayerView(gameController);
 
   gameController.start();
 }

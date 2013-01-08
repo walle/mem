@@ -17,21 +17,21 @@ function BoardView(controller) {
   this.canvas.addEventListener('click', handleInteraction);
   this.canvas.addEventListener('touchstart', handleInteraction);
 
-  this.board.addObserver('prepared', function() {
+  this.board.addObserver('prepared', function(e) {
     this.renderInitial();
   }, this);
 
-  this.board.addObserver('flip', function(card) {
+  this.board.addObserver('flip', function(e, card) {
     var cardElement = document.getElementById(card.id);
     cardElement.classList.toggle('flipped');
     this.player.clicks++;
   }, this);
 
-  this.board.addObserver('match', function() {
+  this.board.addObserver('match', function(e) {
     this.player.pairs++;
   }, this);
 
-  this.board.addObserver('flipBack', function(cards) {
+  this.board.addObserver('flipBack', function(e, cards) {
     setTimeout(function () {
       cards.forEach(function (card) {
         var cardElement = document.getElementById(card.id);
