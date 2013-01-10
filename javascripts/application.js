@@ -11,12 +11,13 @@ window.onresize = setHight;
 
 function storePlayerNameAndPlay () {
   var input = document.getElementsByTagName('input')[0];
-  localStorage["mem.player.name"] = input.value;
+  options.playerName = input.value;
+  options.save();
   window.location = 'play.html';
 }
 
 function handlePlayButtonClick (event) {
-  if (!localStorage["mem.player.name"]) {
+  if (!options.playerName) {
     event.preventDefault();
     var game = document.getElementById('game');
     game.innerHTML = '<input type="text"/><input type="submit" value="Play" />' + game.innerHTML;
@@ -31,7 +32,7 @@ if (playButton) {
   playButton.addEventListener('touchstart', handlePlayButtonClick);
 } else {
   var board = new Board();
-  var player = new Player();
+  var player = new Player(options.playerName);
   var gameController = new GameController(board, player);
   var boardView = new BoardView(gameController);
   var playerView = new PlayerView(gameController);

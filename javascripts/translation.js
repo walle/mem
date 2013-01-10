@@ -27,11 +27,9 @@ var translations = {
   }
 };
 
-var selectedLanguage = 'en';
-
 function t(key) {
-  if (translations[selectedLanguage][key]) {
-    return translations[selectedLanguage][key];
+  if (translations[options.selectedLanguage][key]) {
+    return translations[options.selectedLanguage][key];
   }
 
   return 'Translation missing for {' + key + '}';
