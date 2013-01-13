@@ -5,6 +5,7 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
 }
 
 body.menu, body.options {
@@ -91,7 +92,7 @@ body.game {
 #menu ul {
   padding: 0;
   margin: 0 auto;
-  width: 50%;
+  width: 80%;
   list-style: none;
 }
 
@@ -104,7 +105,6 @@ body.game {
   color: #fff;
   text-decoration: none;
   background-color: rgba(219,87,5,1);
-  font-family: font-family: Futura, "Trebuchet MS", Arial, sans-serif;
   font-size: 3em;
   display: block;
   padding: 4px;
@@ -123,10 +123,50 @@ body.game {
 }
 
 #options {
-  width: 50%;
+  width: 80%;
   margin: 0 auto;
   background: #fff;
   padding: 2%;
   margin-top: 10%;
   border-radius: 8px;
+  text-align: center;
+}
+
+#options ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#options input[type=text] {
+  width: 80%;
+  border-radius: 8px;
+  padding: 8px;
+  border: 1px solid #333;
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0) 100%);
+}
+
+#options input[type=submit] {
+  margin-top: 20px;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #9af054;
+  box-shadow: inset 0px 1px 0px 0px #9af054;
+  background: -webkit-linear-gradient(top, #8AB821 5%, #729C19 100%);
+  background: linear-gradient(to bottom, #8AB821 5%, #729C19 100%);
+  background-color: #8AB821;
+  border-radius: 8px;
+  border: 1px solid #8bb04a;
+  display: inline-block;
+  color: #ececec;
+  font-size: 3em;
+  font-weight: bold;
+  padding: 24px 44px;
+  text-decoration: none;
+  text-shadow:0px 1px 0px #87d608;
+  cursor: pointer;
+}
+
+#options input[type=submit]:active {
+  position: relative;
+  top: 1px;
 }

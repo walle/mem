@@ -4,6 +4,8 @@ var translations = {
     options: 'Options',
     language: 'Language',
     save: 'Save',
+    your_name: 'Your name',
+
     clicks: 'Clicks',
     pairs: 'Pairs',
     time: 'Time',
@@ -20,6 +22,8 @@ var translations = {
     options: 'Alternativ',
     language: 'Språk',
     save: 'Spara',
+    your_name: 'Ditt namn',
+
     clicks: 'Klick',
     pairs: 'Par',
     time: 'Tid',

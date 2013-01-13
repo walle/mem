@@ -1,12 +1,14 @@
 function Options () {
   this.form = document.getElementsByTagName('form')[0];
   this.saveButton = document.getElementById('save-button');
+  this.playerNameLabel = document.getElementById('player-name-label');
   this.playerNameInput = document.getElementById('player-name');
   this.languages = document.getElementsByName('selectedLanguage');
 
   document.getElementsByTagName('h1')[0].innerHTML = t('options');
   document.getElementsByTagName('h2')[0].innerHTML = t('language');
   this.saveButton.value = t('save');
+  this.playerNameLabel.innerHTML = t('your_name');
   this.playerNameInput.value = preferences.playerName;
 
   for (var i = 0; i < this.languages.length; i++) {
