@@ -10,10 +10,14 @@ function Menu() {
 }
 
 Menu.prototype.playButtonClick = function (event) {
-  if (!options.playerName) {
+  if (!preferences.playerName) {
     event.preventDefault();
     var game = document.getElementById('game');
-    game.innerHTML = '<input type="text"/><input type="submit" value="Play" />' + game.innerHTML;
+    game.innerHTML = '<div id="player-name-prompt"><input type="text" value="' + t('your_name') + '"/><input type="submit" value="Play" /></div>' + game.innerHTML;
+    var prompt = document.getElementById('player-name-prompt');
+    prompt.classList.toggle('show');
+    var input = document.getElementsByTagName('input')[0];
+    input.addEventListener('focus', function () { this.value = ''; });
     var submit = document.getElementsByTagName('input')[1];
     submit.addEventListener('click', menu.storePlayerNameAndPlay);
   }
@@ -21,8 +25,8 @@ Menu.prototype.playButtonClick = function (event) {
 
 Menu.prototype.storePlayerNameAndPlay = function () {
   var input = document.getElementsByTagName('input')[0];
-  options.playerName = input.value;
-  options.save();
+  preferences.playerName = input.value;
+  preferences.save();
   window.location = 'play.html';
 };
 
