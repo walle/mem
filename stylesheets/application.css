@@ -46,20 +46,14 @@ body.game {
 }
 
 .card .front {
-  background: #ececec;
+  background: #ececec no-repeat;
+  background-size: 100% 100%;
   -webkit-transform: rotateX(180deg);
   position: relative;
 }
 
 .card .back {
   background: url(../gfx/card_back.png);
-}
-
-.card .front img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin:-18% 0 0 -18%;
 }
 
 .card.flipped {

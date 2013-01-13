@@ -9,8 +9,7 @@ function Card(x, y, image) {
 Card.prototype.render = function() {
   return '<div id="' + this.id + '" class="card" data-x="' + this.x + '" data-y="' + this.y + '">' +
             '<div class="back"></div>' +
-            '<div class="front">' +
-              '<img src="./images/' + this.image + '.png" alt="' + this.image + '" />' +
+            '<div class="front" style="background-image: url(./images/' + this.image + '.jpg);">' +
             '</div>' +
           '</div>';
 };
