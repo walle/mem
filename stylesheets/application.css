@@ -113,10 +113,20 @@ body.game {
   text-align: center;
   -webkit-transition: all .1s ease;
   transition: all .1s ease;
+  margin-top: 20px;
 }
 
-#menu  a:active {
+#menu a:active {
   box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
   position: relative;
   top: 6px;
+}
+
+#options {
+  width: 50%;
+  margin: 0 auto;
+  background: #fff;
+  padding: 2%;
+  margin-top: 10%;
+  border-radius: 8px;
 }

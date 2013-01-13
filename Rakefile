@@ -7,11 +7,18 @@ end
 task :build => [:clean] do
   FileUtils.mkdir 'build'
   File.open('build/index.html','w+') do |output_file|
-    output_file.puts File.read('development.html').gsub(/\.\/stylesheets\/application\.css/, './application.css')
+    output_file.puts File.read('index.html')
+    .gsub(/\<!\-\- javascripts \-\-\>(.*)\<!\-\- javascripts \-\-\>/m, '<script type="text/javascript" src="./menu.js"></script>')
+    .gsub(/\.\/stylesheets\/application\.css/, './application.css')
+  end
+  File.open('build/options.html','w+') do |output_file|
+    output_file.puts File.read('options.html')
+    .gsub(/\<!\-\- javascripts \-\-\>(.*)\<!\-\- javascripts \-\-\>/m, '<script type="text/javascript" src="./options.js"></script>')
+    .gsub(/\.\/stylesheets\/application\.css/, './application.css')
   end
   File.open('build/play.html','w+') do |output_file|
     output_file.puts File.read('play.html')
-      .gsub(/\<!\-\- javascripts \-\-\>(.*)\<!\-\- javascripts \-\-\>/m, '<script type="text/javascript" src="./application.js"></script>')
+      .gsub(/\<!\-\- javascripts \-\-\>(.*)\<!\-\- javascripts \-\-\>/m, '<script type="text/javascript" src="./play.js"></script>')
       .gsub(/\.\/stylesheets\/application\.css/, './application.css')
   end
   FileUtils.cp_r 'images', 'build'
@@ -19,8 +26,12 @@ task :build => [:clean] do
   File.open('build/application.css','w+') do |output_file|
     output_file.puts File.read('stylesheets/application.css').gsub('../', '')
   end
+  javascripts = File.read('index.html').scan(/\<script type="text\/javascript" src="(.*)"\>\<\/script\>/)
+  sh "uglifyjs #{javascripts.join(' ')} --wrap -c -o build/menu.js"
+  javascripts = File.read('options.html').scan(/\<script type="text\/javascript" src="(.*)"\>\<\/script\>/)
+  sh "uglifyjs #{javascripts.join(' ')} --wrap -c -o build/options.js"
   javascripts = File.read('play.html').scan(/\<script type="text\/javascript" src="(.*)"\>\<\/script\>/)
-  sh "uglifyjs #{javascripts.join(' ')} --wrap -c -o build/application.js"
+  sh "uglifyjs #{javascripts.join(' ')} --wrap -c -o build/play.js"
 end
 
 task :run => [:build] do

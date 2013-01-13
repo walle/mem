@@ -1,6 +1,9 @@
 var translations = {
   en: {
     play: 'Play',
+    options: 'Options',
+    language: 'Language',
+    save: 'Save',
     clicks: 'Clicks',
     pairs: 'Pairs',
     time: 'Time',
@@ -14,6 +17,9 @@ var translations = {
   },
   sv: {
     play: 'Spela',
+    options: 'Alternativ',
+    language: 'Språk',
+    save: 'Spara',
     clicks: 'Klick',
     pairs: 'Par',
     time: 'Tid',
@@ -28,8 +34,8 @@ var translations = {
 };
 
 function t(key) {
-  if (translations[options.selectedLanguage][key]) {
-    return translations[options.selectedLanguage][key];
+  if (translations[preferences.selectedLanguage][key]) {
+    return translations[preferences.selectedLanguage][key];
   }
 
   return 'Translation missing for {' + key + '}';
