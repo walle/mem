@@ -10,7 +10,7 @@ body {
 }
 
 body.menu, body.options {
-  background: url(../gfx/maze.png);
+  background: url(../gfx/wallpaper.jpg);
 }
 
 body.game {
