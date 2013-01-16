@@ -1,4 +1,4 @@
-var CARD_IMAGES = ['camera', 'clock', 'glass', 'home', 'music', 'umbrella', 'bin', 'car', 'dog', 'heart', 'leaf', 'star'];
+var CARD_IMAGES = ['cat', 'hummingbird', 'moose', 'rabbit', 'rooster', 'tarantula', 'eagle', 'kiwi', 'orange', 'raven', 'rose', 'toy-car'];
 
 function Deck () {
   var cards = [];
