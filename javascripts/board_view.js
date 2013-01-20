@@ -29,6 +29,22 @@ function BoardView(controller) {
 
   this.board.addObserver('match', function(e) {
     this.player.pairs++;
+    if (this.player.pairs === this.board.numberOfPairs()) {
+      var gameOver = '<div id="game-over">' +
+                        '<h1>' + t('you_win') + '</h1>' +
+                        '<ul class="options">' +
+                          '<li><a id="restart-button" href="#restart">' + t('restart') + '</a></li>' +
+                          '<li><a id="quit-button" href="#quit">' + t('quit') + '</a></li>' +
+                        '</ul>' +
+                      '</div>';
+      this.canvas.innerHTML += gameOver;
+      var restartButton = document.getElementById('restart-button');
+      restartButton.addEventListener('click', this.controller.restart);
+      var quitButton = document.getElementById('quit-button');
+      quitButton.addEventListener('click', function () {
+        window.location = 'index.html';
+      });
+    }
   }, this);
 
   this.board.addObserver('flipBack', function(e, cards) {

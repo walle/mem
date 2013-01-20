@@ -28,7 +28,7 @@ Board.prototype.flipCard = function(x, y) {
     this.flippedCards.push(card);
     if (this.flippedCards.length === 2) {
       if (this.flippedCards[0].image ===  this.flippedCards[1].image) {
-        this.notifyObservers('match'); // TODO: Points and player turns?
+        this.notifyObservers('match');
       } else {
         this.flippedCards.forEach(function (card) {
           card.flipped = false;
@@ -38,6 +38,10 @@ Board.prototype.flipCard = function(x, y) {
       this.flippedCards = [];
     }
   }
+};
+
+Board.prototype.numberOfPairs = function () {
+  return ((this.width * this.height) / 2);
 };
 
 Observerable.mixin(Board.prototype);

@@ -23,3 +23,9 @@ Player.prototype.humanTime = function () {
 
   return time;
 };
+
+Player.prototype.reset = function () {
+  this.clicks = 0;
+  this.pairs = 0;
+  this.seconds = 0;
+};

@@ -5,6 +5,9 @@ var translations = {
     language: 'Language',
     save: 'Save',
     your_name: 'Your name',
+    you_win: 'You win',
+    restart: 'Restart',
+    quit: 'Quit',
 
     clicks: 'Clicks',
     pairs: 'Pairs',
@@ -23,6 +26,9 @@ var translations = {
     language: 'Språk',
     save: 'Spara',
     your_name: 'Ditt namn',
+    you_win: 'Du vinner',
+    restart: 'Starta om',
+    quit: 'Avsluta',
 
     clicks: 'Klick',
     pairs: 'Par',

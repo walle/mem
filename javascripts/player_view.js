@@ -5,7 +5,7 @@ function PlayerView (controller) {
 
   this.render();
   var view = this;
-  setInterval(function () {
+  this.tick = setInterval(function () {
     view.player.seconds++;
     view.render();
   }, 1000);
@@ -16,6 +16,9 @@ function PlayerView (controller) {
 
   this.controller.board.addObserver('match', function(e) {
     this.render();
+    if (this.player.pairs === this.controller.board.numberOfPairs()) {
+      clearInterval(this.tick);
+    }
   }, this);
 }
 
