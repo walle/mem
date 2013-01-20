@@ -212,10 +212,13 @@ input[type=submit]:active {
   margin-top: 10%;
   border-radius: 8px;
   text-align: center;
+  padding-bottom: 4%;
 }
 
 #game-over ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 #game-over a {
