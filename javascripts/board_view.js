@@ -40,8 +40,12 @@ function BoardView(controller) {
       this.canvas.innerHTML += gameOver;
       var restartButton = document.getElementById('restart-button');
       restartButton.addEventListener('click', this.controller.restart);
+      restartButton.addEventListener('touchstart', this.controller.restart);
       var quitButton = document.getElementById('quit-button');
       quitButton.addEventListener('click', function () {
+        window.location = 'index.html';
+      });
+      quitButton.addEventListener('touchstart', function () {
         window.location = 'index.html';
       });
     }

@@ -20,6 +20,7 @@ Menu.prototype.playButtonClick = function (event) {
     input.addEventListener('focus', function () { this.value = ''; });
     var submit = document.getElementsByTagName('input')[1];
     submit.addEventListener('click', menu.storePlayerNameAndPlay);
+    submit.addEventListener('touchstart', menu.storePlayerNameAndPlay);
   }
 };
 
