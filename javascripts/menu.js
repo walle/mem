@@ -5,8 +5,11 @@ function Menu() {
   this.playButton.innerHTML = t('play');
   this.optionsButton.innerHTML = t('options');
 
-  this.playButton.addEventListener('click', this.playButtonClick);
-  this.playButton.addEventListener('touchstart', this.playButtonClick);
+  if (!this.playButton.touchstart) {
+    this.playButton.addEventListener('click', this.playButtonClick);
+  } else {
+    this.playButton.addEventListener('touchstart', this.playButtonClick);
+  }
 }
 
 Menu.prototype.playButtonClick = function (event) {
@@ -19,8 +22,11 @@ Menu.prototype.playButtonClick = function (event) {
     var input = document.getElementsByTagName('input')[0];
     input.addEventListener('focus', function () { this.value = ''; });
     var submit = document.getElementsByTagName('input')[1];
-    submit.addEventListener('click', menu.storePlayerNameAndPlay);
-    submit.addEventListener('touchstart', menu.storePlayerNameAndPlay);
+    if (!submit.touchstart) {
+      submit.addEventListener('click', menu.storePlayerNameAndPlay);
+    } else {
+      submit.addEventListener('touchstart', menu.storePlayerNameAndPlay);
+    }
   }
 };
 

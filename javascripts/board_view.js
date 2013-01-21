@@ -14,8 +14,11 @@ function BoardView(controller) {
     }
   };
 
-  this.canvas.addEventListener('click', handleInteraction);
-  this.canvas.addEventListener('touchstart', handleInteraction);
+  if (!this.canvas.touchstart) {
+    this.canvas.addEventListener('click', handleInteraction);
+  } else {
+    this.canvas.addEventListener('touchstart', handleInteraction);
+  }
 
   this.board.addObserver('prepared', function(e) {
     this.renderInitial();
@@ -37,17 +40,23 @@ function BoardView(controller) {
                           '<li><a id="quit-button" href="#quit">' + t('quit') + '</a></li>' +
                         '</ul>' +
                       '</div>';
-      this.canvas.innerHTML += gameOver;
+      this.canvas.innerHTML = gameOver;
       var restartButton = document.getElementById('restart-button');
-      restartButton.addEventListener('click', this.controller.restart);
-      restartButton.addEventListener('touchstart', this.controller.restart);
+      if (!restartButton.touchstart) {
+        restartButton.addEventListener('click', this.controller.restart);
+      } else {
+        restartButton.addEventListener('touchstart', this.controller.restart);
+      }
       var quitButton = document.getElementById('quit-button');
-      quitButton.addEventListener('click', function () {
+      if (!quitButton.touchstart) {
+        quitButton.addEventListener('click', function () {
         window.location = 'index.html';
       });
-      quitButton.addEventListener('touchstart', function () {
+      } else {
+        quitButton.addEventListener('touchstart', function () {
         window.location = 'index.html';
       });
+      }
     }
   }, this);
 

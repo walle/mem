@@ -17,6 +17,10 @@ body.game {
   background: url(../gfx/wood.jpg);
 }
 
+#game {
+  position: relative;
+}
+
 #board {
   padding: 2%;
   height: 80%;
