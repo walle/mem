@@ -213,6 +213,7 @@ input[type=submit]:active {
   border-radius: 8px;
   text-align: center;
   padding-bottom: 4%;
+  z-index: 999;
 }
 
 #game-over ul {
