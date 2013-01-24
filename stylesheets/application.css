@@ -253,3 +253,10 @@ input[type=submit]:active {
   position: relative;
   top: 6px;
 }
+
+@media only screen and (max-device-width : 1024px) or (max-width : 1024px) {
+  #board {
+    width: 600px;
+    margin: 0 auto;
+  }
+}
